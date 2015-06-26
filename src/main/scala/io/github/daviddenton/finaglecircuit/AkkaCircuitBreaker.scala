@@ -13,8 +13,6 @@ import scala.concurrent.ExecutionContext.Implicits.global
 import scala.concurrent.duration.FiniteDuration
 import scala.language.implicitConversions
 
-
-
 class AkkaCircuitBreaker(circuitConfig: CircuitConfig) extends CircuitBreaker {
 
   val name = circuitConfig.circuitName
@@ -37,4 +35,6 @@ class AkkaCircuitBreaker(circuitConfig: CircuitConfig) extends CircuitBreaker {
   }
 
   private implicit def toScala(duration: Duration): FiniteDuration = FiniteDuration(duration.toMillis, MILLISECONDS)
+
+  def stop() = system.shutdown()
 }

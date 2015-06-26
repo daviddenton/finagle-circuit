@@ -9,10 +9,12 @@ class StubCircuitBreaker(val name: CircuitName) extends CircuitBreaker {
 
   def changeState(circuitStateChange: CircuitStateChange) = callbacks.foreach(_(circuitStateChange))
 
-  override def withCircuit[V](body: => Future[V]): Future[V] = body
+  override def withCircuit[V](body: => Future[V]) = body
 
-  override def onCircuitStatusChange(state: (CircuitStateChange) => Unit): CircuitBreaker = {
+  override def onCircuitStatusChange(state: (CircuitStateChange) => Unit) = {
     callbacks = state :: callbacks
     this
   }
+
+  override def stop() = println("stopping")
 }
