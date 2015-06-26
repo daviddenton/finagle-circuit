@@ -40,7 +40,7 @@ class AkkaCircuitBreakerTest extends FunSpec with ShouldMatchers {
     }
 
     it("event is sent that the circuit is tripped on the third failure") {
-      Thread.sleep(5)
+      Thread.sleep(10)
       states.toList shouldEqual List(CircuitStateChange(name, CircuitStatus.Open))
       states.clear()
     }
