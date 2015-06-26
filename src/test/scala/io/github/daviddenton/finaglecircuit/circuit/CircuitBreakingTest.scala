@@ -4,6 +4,7 @@ import com.twitter.finagle.Service
 import com.twitter.finagle.http.Request
 import com.twitter.io.Charsets
 import com.twitter.util.{Await, Future}
+import io.github.daviddenton.finaglecircuit.test.TestingCircuitBreaker
 import io.github.daviddenton.finaglecircuit.{CircuitBreaking, CircuitBroken, CircuitName}
 import org.jboss.netty.handler.codec.http.HttpResponseStatus._
 import org.scalatest.{FunSpec, ShouldMatchers}
@@ -13,7 +14,7 @@ class CircuitBreakingTest extends FunSpec with ShouldMatchers {
   private val name = CircuitName("mysystem")
 
   describe("CircuitBreaking") {
-    val breaker = new StubCircuitBreaker(name)
+    val breaker = new TestingCircuitBreaker(name)
 
     it("converts circuit broken messages into 503") {
       val a = Await.result(new CircuitBreaking(breaker).apply(Request("/"), Service.mk(r => Future.exception(CircuitBroken(name, "reason")))))
