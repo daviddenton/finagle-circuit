@@ -58,6 +58,7 @@ class AkkaCircuitBreakerTest extends FunSpec with ShouldMatchers {
       respondWith(circuitBreaker, 0) shouldEqual "yay"
     }
     it("the circuit is closed") {
+      Thread.sleep(downTime.toMillis)
       states.toList shouldEqual List(CircuitStateChange(name, CircuitStatus.Closed))
     }
   }
