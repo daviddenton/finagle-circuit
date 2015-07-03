@@ -14,10 +14,10 @@ See the [example code](https://github.com/daviddenton/finagle-circuit/tree/maste
 
 ###Get it
 Add the following lines to ```build.sbt```. Note that this library doesn't depend on a particular version of Finagle,
-and it has only been tested with the version below:
+it has been built and tested with the version below:
 
 ```scala
 resolvers += "JCenter" at "https://jcenter.bintray.com"
-libraryDependencies += "com.twitter" %% "finagle-http" % "6.25.0"
+libraryDependencies += "com.twitter" %% "finagle-http" % "6.26.0"
 libraryDependencies += "io.github.daviddenton" %% "finagle-circuit" % "X.X.X"
 ```
