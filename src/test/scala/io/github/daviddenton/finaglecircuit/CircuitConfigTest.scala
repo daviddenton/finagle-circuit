@@ -1,8 +1,7 @@
-package io.github.daviddenton.finaglecircuit.circuit
+package io.github.daviddenton.finaglecircuit
 
 import java.time.Duration
 
-import io.github.daviddenton.finaglecircuit.{CircuitConfig, CircuitName}
 import org.scalatest.{FunSpec, ShouldMatchers}
 
 class CircuitConfigTest extends FunSpec with ShouldMatchers {

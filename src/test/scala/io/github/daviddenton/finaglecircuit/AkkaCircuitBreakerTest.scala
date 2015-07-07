@@ -1,10 +1,9 @@
-package io.github.daviddenton.finaglecircuit.circuit
+package io.github.daviddenton.finaglecircuit
 
 import java.time.Duration
 
 import com.twitter.finagle.FailedFastException
 import com.twitter.util.{Await, Future, Try}
-import io.github.daviddenton.finaglecircuit._
 import org.scalatest.{FunSpec, ShouldMatchers}
 
 import scala.collection.mutable.ListBuffer

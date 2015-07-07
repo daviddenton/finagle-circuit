@@ -1,11 +1,10 @@
-package io.github.daviddenton.finaglecircuit.circuit
+package io.github.daviddenton.finaglecircuit
 
 import com.twitter.finagle.Service
 import com.twitter.finagle.http.Request
 import com.twitter.io.Charsets
 import com.twitter.util.{Await, Future}
 import io.github.daviddenton.finaglecircuit.test.TestingCircuitBreaker
-import io.github.daviddenton.finaglecircuit.{CircuitBreaking, CircuitBroken, CircuitName}
 import org.jboss.netty.handler.codec.http.HttpResponseStatus._
 import org.scalatest.{FunSpec, ShouldMatchers}
 
