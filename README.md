@@ -1,8 +1,8 @@
 finagle-circuit
 ===========
 <a href="https://travis-ci.org/daviddenton/finagle-circuit" target="_top">
-<img src="https://travis-ci.org/daviddenton/finagle-circuit.svg?branch=master"/></a> 
-<a href="https://coveralls.io/r/daviddenton/finagle-circuit?branch=master" target="_top"><img src="https://coveralls.io/repos/daviddenton/finagle-circuit/badge.svg?branch=master"/></a> 
+<img src="https://travis-ci.org/daviddenton/finagle-circuit.svg"/></a> 
+<a href="https://coveralls.io/r/daviddenton/finagle-circuit" target="_top"><img src="https://coveralls.io/repos/daviddenton/finagle-circuit/badge.svg"/></a> 
 <a href="https://bintray.com/daviddenton/maven/finagle-circuit/_latestVersion" target="_top"><img src="https://api.bintray.com/packages/daviddenton/maven/finagle-circuit/images/download.svg"/></a> 
 <a href="https://bintray.com/daviddenton/maven/finagle-circuit/view?source=watch" target="_top"><img src="https://www.bintray.com/docs/images/bintray_badge_color.png"/></a> 
 
