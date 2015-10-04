@@ -2,8 +2,8 @@ package examples
 
 import java.time.Duration
 
-import com.twitter.finagle.Http
-import com.twitter.finagle.http.Request
+import com.twitter.finagle.Httpx
+import com.twitter.finagle.httpx.Request
 import com.twitter.util.Await.result
 import io.github.daviddenton.finaglecircuit.{AkkaCircuitBreaker, CircuitBreaking, CircuitConfig, CircuitName}
 
@@ -19,11 +19,11 @@ object CircuitBreakingService extends App {
     .onCircuitStatusChange(println)
 
   val protectedService = new CircuitBreaking(breaker)
-    .andThen(Http.newService("not-a-service.com:19999"))
+    .andThen(Httpx.newService("not-a-service.com:19999"))
 
-  println(result(protectedService(Request("/"))).getStatus)
-  println(result(protectedService(Request("/"))).getStatus)
-  println(result(protectedService(Request("/"))).getStatus)
+  println(result(protectedService(Request("/"))).status)
+  println(result(protectedService(Request("/"))).status)
+  println(result(protectedService(Request("/"))).status)
 
   breaker.stop()
 }

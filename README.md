@@ -18,6 +18,19 @@ it has been built and tested with the version below:
 
 ```scala
 resolvers += "JCenter" at "https://jcenter.bintray.com"
-libraryDependencies += "com.twitter" %% "finagle-http" % "6.26.0"
+libraryDependencies += "com.twitter" %% "finagle-httpx" % "6.29.0"
 libraryDependencies += "io.github.daviddenton" %% "finagle-circuit" % "X.X.X"
 ```
+
+###Migration notes
+
+####v2.0.0
+- Upgrading to v6.29.0 of Finagle-httpx. Finagle-http has been removed as of this release, so have migrated the API 
+to use this instead.
+    - References to ```HttpRequest/Response``` Netty classes are now ```Request/Response``` instead
+    - References to ```HttpResponseStatus``` changed to ```Status```
+    - References to ππ```HttpMethod.GET/POST/...``` changd to ```Method.Get/Post/...```
+    - References to ```Http.XXX()``` will now use ```Http.XXX()``` instead
+
+####v1.1.0
+- Release to be used for versions of Finagle upto 6.28.0

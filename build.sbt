@@ -9,9 +9,9 @@ name := projectName
 
 description := "Http circuit-breaking for Finagle"
 
-scalaVersion := "2.11.6"
+scalaVersion := "2.11.7"
 
-crossScalaVersions := Seq("2.10.4", "2.11.6")
+crossScalaVersions := Seq("2.10.4", "2.11.7")
 
 scalacOptions += "-deprecation"
 
@@ -19,7 +19,7 @@ scalacOptions += "-feature"
 
 libraryDependencies ++= Seq(
   "com.typesafe.akka" %% "akka-actor" % "2.3.10",
-  "com.twitter" %% "finagle-http" % "6.26.0" % "provided",
+  "com.twitter" %% "finagle-httpx" % "6.29.0" % "provided",
   "org.scalatest" %% "scalatest" % "2.2.1" % "test")
 
 licenses +=("Apache-2.0", url("http://opensource.org/licenses/Apache-2.0"))
