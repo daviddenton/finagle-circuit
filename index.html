@@ -1,0 +1,111 @@
+<!DOCTYPE html>
+<html>
+
+  <head>
+    <meta charset='utf-8'>
+    <meta http-equiv="X-UA-Compatible" content="chrome=1">
+    <meta name="description" content="Finagle-circuit : Http circuit-breaking for Finagle">
+
+    <link rel="stylesheet" type="text/css" media="screen" href="stylesheets/stylesheet.css">
+
+    <title>Finagle-circuit</title>
+  </head>
+
+  <body>
+
+    <!-- HEADER -->
+    <div id="header_wrap" class="outer">
+        <header class="inner">
+          <a id="forkme_banner" href="https://github.com/daviddenton/finagle-circuit">View on GitHub</a>
+
+          <h1 id="project_title">Finagle-circuit</h1>
+          <h2 id="project_tagline">Http circuit-breaking for Finagle</h2>
+
+            <section id="downloads">
+              <a class="zip_download_link" href="https://github.com/daviddenton/finagle-circuit/zipball/master">Download this project as a .zip file</a>
+              <a class="tar_download_link" href="https://github.com/daviddenton/finagle-circuit/tarball/master">Download this project as a tar.gz file</a>
+            </section>
+        </header>
+    </div>
+
+    <!-- MAIN CONTENT -->
+    <div id="main_content_wrap" class="outer">
+      <section id="main_content" class="inner">
+        <h1>
+<a id="finagle-circuit" class="anchor" href="#finagle-circuit" aria-hidden="true"><span class="octicon octicon-link"></span></a>finagle-circuit</h1>
+
+<p><a href="https://travis-ci.org/daviddenton/finagle-circuit" target="_top">
+<img src="https://travis-ci.org/daviddenton/finagle-circuit.svg"></a> 
+<a href="https://coveralls.io/r/daviddenton/finagle-circuit" target="_top"><img src="https://coveralls.io/repos/daviddenton/finagle-circuit/badge.svg"></a> 
+<a href="https://bintray.com/daviddenton/maven/finagle-circuit/_latestVersion" target="_top"><img src="https://api.bintray.com/packages/daviddenton/maven/finagle-circuit/images/download.svg"></a> 
+<a href="https://bintray.com/daviddenton/maven/finagle-circuit/view?source=watch" target="_top"><img src="https://www.bintray.com/docs/images/bintray_badge_color.png"></a> </p>
+
+<p>Finagle-circuit is a bolt-on HTTP circuit-breaking library for the <a href="http://twitter.github.io/finagle/">Finagle</a> RPC framework from Twitter. 
+It provides a more a granular circuit-breaking ability and includes a HTTP Filter which can be used with Finagle servers and clients.</p>
+
+<h3>
+<a id="see-it" class="anchor" href="#see-it" aria-hidden="true"><span class="octicon octicon-link"></span></a>See it</h3>
+
+<p>See the <a href="https://github.com/daviddenton/finagle-circuit/tree/master/src/test/scala/examples">example code</a>.</p>
+
+<h3>
+<a id="get-it" class="anchor" href="#get-it" aria-hidden="true"><span class="octicon octicon-link"></span></a>Get it</h3>
+
+<p>Add the following lines to <code>build.sbt</code>. Note that this library doesn't depend on a particular version of Finagle,
+it has been built and tested with the version below:</p>
+
+<div class="highlight highlight-source-scala"><pre>resolvers <span class="pl-k">+</span><span class="pl-k">=</span> <span class="pl-s"><span class="pl-pds">"</span>JCenter<span class="pl-pds">"</span></span> at <span class="pl-s"><span class="pl-pds">"</span>https://jcenter.bintray.com<span class="pl-pds">"</span></span>
+libraryDependencies <span class="pl-k">+</span><span class="pl-k">=</span> <span class="pl-s"><span class="pl-pds">"</span>com.twitter<span class="pl-pds">"</span></span> <span class="pl-k">%%</span> <span class="pl-s"><span class="pl-pds">"</span>finagle-httpx<span class="pl-pds">"</span></span> <span class="pl-k">%</span> <span class="pl-s"><span class="pl-pds">"</span>6.29.0<span class="pl-pds">"</span></span>
+libraryDependencies <span class="pl-k">+</span><span class="pl-k">=</span> <span class="pl-s"><span class="pl-pds">"</span>io.github.daviddenton<span class="pl-pds">"</span></span> <span class="pl-k">%%</span> <span class="pl-s"><span class="pl-pds">"</span>finagle-circuit<span class="pl-pds">"</span></span> <span class="pl-k">%</span> <span class="pl-s"><span class="pl-pds">"</span>X.X.X<span class="pl-pds">"</span></span></pre></div>
+
+<h3>
+<a id="migration-notes" class="anchor" href="#migration-notes" aria-hidden="true"><span class="octicon octicon-link"></span></a>Migration notes</h3>
+
+<h4>
+<a id="v300" class="anchor" href="#v300" aria-hidden="true"><span class="octicon octicon-link"></span></a>v3.0.0</h4>
+
+<ul>
+<li>Breaking change: simple repackage of all classes into <code>io.github.finaglecircuit</code>
+</li>
+<li>Upgrade Akka-actor dependency</li>
+</ul>
+
+<h4>
+<a id="v200" class="anchor" href="#v200" aria-hidden="true"><span class="octicon octicon-link"></span></a>v2.0.0</h4>
+
+<ul>
+<li>Upgrading to v6.29.0 of Finagle-httpx. Finagle-http has been removed as of this release, so have migrated the API 
+to use this instead.
+
+<ul>
+<li>References to <code>HttpRequest/Response</code> Netty classes are now <code>Request/Response</code> instead</li>
+<li>References to <code>HttpResponseStatus</code> changed to <code>Status</code>
+</li>
+<li>References to ππ<code>HttpMethod.GET/POST/...</code> changd to <code>Method.Get/Post/...</code>
+</li>
+<li>References to <code>Http.XXX()</code> will now use <code>Http.XXX()</code> instead</li>
+</ul>
+</li>
+</ul>
+
+<h4>
+<a id="v110" class="anchor" href="#v110" aria-hidden="true"><span class="octicon octicon-link"></span></a>v1.1.0</h4>
+
+<ul>
+<li>Release to be used for versions of Finagle upto 6.28.0</li>
+</ul>
+      </section>
+    </div>
+
+    <!-- FOOTER  -->
+    <div id="footer_wrap" class="outer">
+      <footer class="inner">
+        <p class="copyright">Finagle-circuit maintained by <a href="https://github.com/daviddenton">daviddenton</a></p>
+        <p>Published with <a href="https://pages.github.com">GitHub Pages</a></p>
+      </footer>
+    </div>
+
+    
+
+  </body>
+</html>
