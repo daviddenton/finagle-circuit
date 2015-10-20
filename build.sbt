@@ -18,7 +18,7 @@ scalacOptions += "-deprecation"
 scalacOptions += "-feature"
 
 libraryDependencies ++= Seq(
-  "com.typesafe.akka" %% "akka-actor" % "2.3.10",
+  "com.typesafe.akka" %% "akka-actor" % "2.3.14",
   "com.twitter" %% "finagle-httpx" % "6.29.0" % "provided",
   "org.scalatest" %% "scalatest" % "2.2.1" % "test")
 

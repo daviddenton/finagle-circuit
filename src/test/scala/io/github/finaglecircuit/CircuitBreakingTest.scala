@@ -1,10 +1,10 @@
-package io.github.daviddenton.finaglecircuit
+package io.github.finaglecircuit
 
 import com.twitter.finagle.Service
 import com.twitter.finagle.httpx.Request
 import com.twitter.finagle.httpx.Status._
 import com.twitter.util.{Await, Future}
-import io.github.daviddenton.finaglecircuit.test.TestingCircuitBreaker
+import io.github.finaglecircuit.test.TestingCircuitBreaker
 import org.scalatest.{FunSpec, ShouldMatchers}
 
 class CircuitBreakingTest extends FunSpec with ShouldMatchers {

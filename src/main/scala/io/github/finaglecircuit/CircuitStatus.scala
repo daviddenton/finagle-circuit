@@ -1,4 +1,4 @@
-package io.github.daviddenton.finaglecircuit
+package io.github.finaglecircuit
 
 /**
  * Circuit states. Of note is HalfOpen:

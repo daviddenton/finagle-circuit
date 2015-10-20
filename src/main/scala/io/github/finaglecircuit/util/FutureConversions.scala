@@ -1,4 +1,4 @@
-package io.github.daviddenton.finaglecircuit.util
+package io.github.finaglecircuit.util
 
 import com.twitter.util.{Future => TwitterF, Promise => PromiseF}
 

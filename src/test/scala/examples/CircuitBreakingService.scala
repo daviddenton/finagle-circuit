@@ -5,7 +5,7 @@ import java.time.Duration
 import com.twitter.finagle.Httpx
 import com.twitter.finagle.httpx.Request
 import com.twitter.util.Await.result
-import io.github.daviddenton.finaglecircuit.{AkkaCircuitBreaker, CircuitBreaking, CircuitConfig, CircuitName}
+import io.github.finaglecircuit.{AkkaCircuitBreaker, CircuitBreaking, CircuitConfig, CircuitName}
 
 /**
  * Example of using a Circuit. After the first 2 failures, the circuit is tripped for the specified timeout.

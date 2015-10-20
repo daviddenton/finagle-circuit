@@ -1,7 +1,7 @@
-package io.github.daviddenton.finaglecircuit.test
+package io.github.finaglecircuit.test
 
 import com.twitter.util.Future
-import io.github.daviddenton.finaglecircuit.{CircuitBreaker, CircuitName, CircuitStateChange}
+import io.github.finaglecircuit.{CircuitBreaker, CircuitName, CircuitStateChange}
 
 /**
  * Circuit breaker which can be used for testing purposes by forcing state changes.

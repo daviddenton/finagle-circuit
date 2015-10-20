@@ -1,4 +1,4 @@
-package io.github.daviddenton.finaglecircuit
+package io.github.finaglecircuit
 
 import java.time.Duration
 import java.util.concurrent.TimeUnit._
@@ -7,7 +7,7 @@ import akka.actor.ActorSystem
 import akka.pattern.CircuitBreakerOpenException
 import com.twitter.finagle.FailedFastException
 import com.twitter.util.Future
-import io.github.daviddenton.finaglecircuit.util.FutureConversions
+import io.github.finaglecircuit.util.FutureConversions
 
 import scala.concurrent.ExecutionContext.Implicits.global
 import scala.concurrent.duration.FiniteDuration

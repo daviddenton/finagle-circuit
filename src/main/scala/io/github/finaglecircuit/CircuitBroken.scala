@@ -1,4 +1,4 @@
-package io.github.daviddenton.finaglecircuit
+package io.github.finaglecircuit
 
 /**
  * The exception thrown from the circuit breaker when the circuit is open.

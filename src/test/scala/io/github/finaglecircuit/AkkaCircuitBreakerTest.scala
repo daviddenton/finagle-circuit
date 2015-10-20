@@ -1,4 +1,4 @@
-package io.github.daviddenton.finaglecircuit
+package io.github.finaglecircuit
 
 import java.time.Duration
 

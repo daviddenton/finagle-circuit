@@ -1,7 +1,7 @@
-package io.github.daviddenton.finaglecircuit.test
+package io.github.finaglecircuit.test
 
 import com.twitter.util.{Await, Future}
-import io.github.daviddenton.finaglecircuit.{CircuitStatus, CircuitStateChange, CircuitName}
+import io.github.finaglecircuit.{CircuitStatus, CircuitStateChange, CircuitName}
 import org.scalatest.{FunSpec, ShouldMatchers}
 
 class TestingCircuitBreakerTest extends FunSpec with ShouldMatchers {

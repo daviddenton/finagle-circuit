@@ -1,4 +1,4 @@
-package io.github.daviddenton.finaglecircuit
+package io.github.finaglecircuit
 
 import com.twitter.finagle.httpx.Status._
 import com.twitter.finagle.httpx.{Request, Response}
