@@ -24,6 +24,10 @@ libraryDependencies += "io.github.daviddenton" %% "finagle-circuit" % "X.X.X"
 
 ###Migration notes
 
+####v3.0.0
+- Breaking change: simple repackage of all classes into ```io.github.finaglecircuit```
+- Upgrade Akka-actor dependency
+
 ####v2.0.0
 - Upgrading to v6.29.0 of Finagle-httpx. Finagle-http has been removed as of this release, so have migrated the API 
 to use this instead.
