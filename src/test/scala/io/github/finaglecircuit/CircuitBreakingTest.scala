@@ -1,8 +1,8 @@
 package io.github.finaglecircuit
 
 import com.twitter.finagle.Service
-import com.twitter.finagle.httpx.Request
-import com.twitter.finagle.httpx.Status._
+import com.twitter.finagle.http.Request
+import com.twitter.finagle.http.Status._
 import com.twitter.util.{Await, Future}
 import io.github.finaglecircuit.test.TestingCircuitBreaker
 import org.scalatest.{FunSpec, ShouldMatchers}

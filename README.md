@@ -18,11 +18,15 @@ it has been built and tested with the version below:
 
 ```scala
 resolvers += "JCenter" at "https://jcenter.bintray.com"
-libraryDependencies += "com.twitter" %% "finagle-httpx" % "6.29.0"
+libraryDependencies += "com.twitter" %% "finagle-http" % "6.30.0"
 libraryDependencies += "io.github.daviddenton" %% "finagle-circuit" % "X.X.X"
 ```
 
 ###Migration notes
+
+####v4.0.0
+- Upgrading to v6.30.0 of finagle-http. Finagle-httpx has been renamed as of this release, so have migrated the API 
+to use this instead.
 
 ####v3.0.0
 - Breaking change: simple repackage of all classes into ```io.github.finaglecircuit```

@@ -19,8 +19,8 @@ scalacOptions += "-feature"
 
 libraryDependencies ++= Seq(
   "com.typesafe.akka" %% "akka-actor" % "2.3.14",
-  "com.twitter" %% "finagle-httpx" % "6.29.0" % "provided",
-  "org.scalatest" %% "scalatest" % "2.2.1" % "test")
+  "com.twitter" %% "finagle-http" % "6.30.0" % "provided",
+  "org.scalatest" %% "scalatest" % "2.2.4" % "test")
 
 licenses +=("Apache-2.0", url("http://opensource.org/licenses/Apache-2.0"))
 
