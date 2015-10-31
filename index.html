@@ -1,37 +1,25 @@
 <!DOCTYPE html>
-<html>
-
+<html lang="en-us">
   <head>
-    <meta charset='utf-8'>
-    <meta http-equiv="X-UA-Compatible" content="chrome=1">
-    <meta name="description" content="Finagle-circuit : Http circuit-breaking for Finagle">
-
-    <link rel="stylesheet" type="text/css" media="screen" href="stylesheets/stylesheet.css">
-
-    <title>Finagle-circuit</title>
+    <meta charset="UTF-8">
+    <title>Finagle-circuit by daviddenton</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="stylesheet" type="text/css" href="stylesheets/normalize.css" media="screen">
+    <link href='https://fonts.googleapis.com/css?family=Open+Sans:400,700' rel='stylesheet' type='text/css'>
+    <link rel="stylesheet" type="text/css" href="stylesheets/stylesheet.css" media="screen">
+    <link rel="stylesheet" type="text/css" href="stylesheets/github-light.css" media="screen">
   </head>
-
   <body>
+    <section class="page-header">
+      <h1 class="project-name">Finagle-circuit</h1>
+      <h2 class="project-tagline">Http circuit-breaking for Finagle</h2>
+      <a href="https://github.com/daviddenton/finagle-circuit" class="btn">View on GitHub</a>
+      <a href="https://github.com/daviddenton/finagle-circuit/zipball/master" class="btn">Download .zip</a>
+      <a href="https://github.com/daviddenton/finagle-circuit/tarball/master" class="btn">Download .tar.gz</a>
+    </section>
 
-    <!-- HEADER -->
-    <div id="header_wrap" class="outer">
-        <header class="inner">
-          <a id="forkme_banner" href="https://github.com/daviddenton/finagle-circuit">View on GitHub</a>
-
-          <h1 id="project_title">Finagle-circuit</h1>
-          <h2 id="project_tagline">Http circuit-breaking for Finagle</h2>
-
-            <section id="downloads">
-              <a class="zip_download_link" href="https://github.com/daviddenton/finagle-circuit/zipball/master">Download this project as a .zip file</a>
-              <a class="tar_download_link" href="https://github.com/daviddenton/finagle-circuit/tarball/master">Download this project as a tar.gz file</a>
-            </section>
-        </header>
-    </div>
-
-    <!-- MAIN CONTENT -->
-    <div id="main_content_wrap" class="outer">
-      <section id="main_content" class="inner">
-        <h1>
+    <section class="main-content">
+      <h1>
 <a id="finagle-circuit" class="anchor" href="#finagle-circuit" aria-hidden="true"><span class="octicon octicon-link"></span></a>finagle-circuit</h1>
 
 <p><a href="https://travis-ci.org/daviddenton/finagle-circuit" target="_top">
@@ -55,11 +43,19 @@ It provides a more a granular circuit-breaking ability and includes a HTTP Filte
 it has been built and tested with the version below:</p>
 
 <div class="highlight highlight-source-scala"><pre>resolvers <span class="pl-k">+</span><span class="pl-k">=</span> <span class="pl-s"><span class="pl-pds">"</span>JCenter<span class="pl-pds">"</span></span> at <span class="pl-s"><span class="pl-pds">"</span>https://jcenter.bintray.com<span class="pl-pds">"</span></span>
-libraryDependencies <span class="pl-k">+</span><span class="pl-k">=</span> <span class="pl-s"><span class="pl-pds">"</span>com.twitter<span class="pl-pds">"</span></span> <span class="pl-k">%%</span> <span class="pl-s"><span class="pl-pds">"</span>finagle-httpx<span class="pl-pds">"</span></span> <span class="pl-k">%</span> <span class="pl-s"><span class="pl-pds">"</span>6.29.0<span class="pl-pds">"</span></span>
+libraryDependencies <span class="pl-k">+</span><span class="pl-k">=</span> <span class="pl-s"><span class="pl-pds">"</span>com.twitter<span class="pl-pds">"</span></span> <span class="pl-k">%%</span> <span class="pl-s"><span class="pl-pds">"</span>finagle-http<span class="pl-pds">"</span></span> <span class="pl-k">%</span> <span class="pl-s"><span class="pl-pds">"</span>6.30.0<span class="pl-pds">"</span></span>
 libraryDependencies <span class="pl-k">+</span><span class="pl-k">=</span> <span class="pl-s"><span class="pl-pds">"</span>io.github.daviddenton<span class="pl-pds">"</span></span> <span class="pl-k">%%</span> <span class="pl-s"><span class="pl-pds">"</span>finagle-circuit<span class="pl-pds">"</span></span> <span class="pl-k">%</span> <span class="pl-s"><span class="pl-pds">"</span>X.X.X<span class="pl-pds">"</span></span></pre></div>
 
 <h3>
 <a id="migration-notes" class="anchor" href="#migration-notes" aria-hidden="true"><span class="octicon octicon-link"></span></a>Migration notes</h3>
+
+<h4>
+<a id="v400" class="anchor" href="#v400" aria-hidden="true"><span class="octicon octicon-link"></span></a>v4.0.0</h4>
+
+<ul>
+<li>Upgrading to v6.30.0 of finagle-http. Finagle-httpx has been renamed as of this release, so have migrated the API 
+to use this instead.</li>
+</ul>
 
 <h4>
 <a id="v300" class="anchor" href="#v300" aria-hidden="true"><span class="octicon octicon-link"></span></a>v3.0.0</h4>
@@ -94,18 +90,16 @@ to use this instead.
 <ul>
 <li>Release to be used for versions of Finagle upto 6.28.0</li>
 </ul>
-      </section>
-    </div>
 
-    <!-- FOOTER  -->
-    <div id="footer_wrap" class="outer">
-      <footer class="inner">
-        <p class="copyright">Finagle-circuit maintained by <a href="https://github.com/daviddenton">daviddenton</a></p>
-        <p>Published with <a href="https://pages.github.com">GitHub Pages</a></p>
+      <footer class="site-footer">
+        <span class="site-footer-owner"><a href="https://github.com/daviddenton/finagle-circuit">Finagle-circuit</a> is maintained by <a href="https://github.com/daviddenton">daviddenton</a>.</span>
+
+        <span class="site-footer-credits">This page was generated by <a href="https://pages.github.com">GitHub Pages</a> using the <a href="https://github.com/jasonlong/cayman-theme">Cayman theme</a> by <a href="https://twitter.com/jasonlong">Jason Long</a>.</span>
       </footer>
-    </div>
 
-              <script type="text/javascript">
+    </section>
+
+            <script type="text/javascript">
             var gaJsHost = (("https:" == document.location.protocol) ? "https://ssl." : "http://www.");
             document.write(unescape("%3Cscript src='" + gaJsHost + "google-analytics.com/ga.js' type='text/javascript'%3E%3C/script%3E"));
           </script>
@@ -115,7 +109,6 @@ to use this instead.
             pageTracker._trackPageview();
             } catch(err) {}
           </script>
-
 
   </body>
 </html>
