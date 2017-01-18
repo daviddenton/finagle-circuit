@@ -24,6 +24,11 @@ libraryDependencies += "io.github.daviddenton" %% "finagle-circuit" % "X.X.X"
 
 ###Migration notes
 
+####v5.0.0
+- Upgrading to v6.41.0 of finagle-http. 
+- *Note that the behaviour of timeouts has changed from v4. Previously, calls would NOT eagerly timeout, but merely register any call taking over n-seconds as a failure.
+Now, calls throw a 
+
 ####v4.0.0
 - Upgrading to v6.30.0 of finagle-http. Finagle-httpx has been renamed as of this release, so have migrated the API 
 to use this instead.

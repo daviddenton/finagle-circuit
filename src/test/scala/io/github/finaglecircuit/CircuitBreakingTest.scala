@@ -5,9 +5,9 @@ import com.twitter.finagle.http.Request
 import com.twitter.finagle.http.Status._
 import com.twitter.util.{Await, Future}
 import io.github.finaglecircuit.test.TestingCircuitBreaker
-import org.scalatest.{FunSpec, ShouldMatchers}
+import org.scalatest.{FunSpec, Matchers}
 
-class CircuitBreakingTest extends FunSpec with ShouldMatchers {
+class CircuitBreakingTest extends FunSpec with Matchers {
 
   private val name = CircuitName("mysystem")
 

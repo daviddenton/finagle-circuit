@@ -2,9 +2,9 @@ package io.github.finaglecircuit.test
 
 import com.twitter.util.{Await, Future}
 import io.github.finaglecircuit.{CircuitStatus, CircuitStateChange, CircuitName}
-import org.scalatest.{FunSpec, ShouldMatchers}
+import org.scalatest.{FunSpec, Matchers}
 
-class TestingCircuitBreakerTest extends FunSpec with ShouldMatchers {
+class TestingCircuitBreakerTest extends FunSpec with Matchers {
 
   describe("TestingCircuitBreaker") {
     val name = CircuitName("circuit")

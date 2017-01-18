@@ -3,16 +3,19 @@ package io.github.finaglecircuit
 import java.time.Duration
 
 import com.twitter.finagle.FailedFastException
-import com.twitter.util.{Await, Future, Try}
-import org.scalatest.{FunSpec, ShouldMatchers}
+import com.twitter.util.Await.result
+import com.twitter.util.Duration.fromMilliseconds
+import com.twitter.util.Future.sleep
+import com.twitter.util.{Future, JavaTimer, Try}
+import org.scalatest.{FunSpec, Matchers}
 
 import scala.collection.mutable.ListBuffer
 
 /**
- * Yes, we realise that this test uses Thread.sleeps, which sucks - but we're at the behest of an internal timer in the
- * Akka circuit breaker client which does incremental backoff.
- */
-class AkkaCircuitBreakerTest extends FunSpec with ShouldMatchers {
+  * Yes, we realise that this test uses Thread.sleeps, which sucks - but we're at the behest of an internal timer in the
+  * Akka circuit breaker client which does incremental backoff.
+  */
+class AkkaCircuitBreakerTest extends FunSpec with Matchers {
 
   private val name = CircuitName("mysystem")
   private val timeout = Duration.ofMillis(10)
@@ -27,15 +30,15 @@ class AkkaCircuitBreakerTest extends FunSpec with ShouldMatchers {
     val e = new RuntimeException("poo")
 
     it("first failure is propagated to the caller") {
-      Try(Await.result(circuitBreaker.withCircuit(Future.exception(e)))).throwable shouldEqual e
+      Try(result(circuitBreaker.withCircuit(Future.exception(e)))).throwable shouldEqual e
     }
 
     it("second failure is propagated to the caller") {
-      Try(Await.result(circuitBreaker.withCircuit(Future.exception(e)))).throwable shouldEqual e
+      Try(result(circuitBreaker.withCircuit(Future.exception(e)))).throwable shouldEqual e
     }
 
     it("third failure is propagated to the caller") {
-      Try(Await.result(circuitBreaker.withCircuit(Future.exception(e)))).throwable shouldEqual e
+      Try(result(circuitBreaker.withCircuit(Future.exception(e)))).throwable shouldEqual e
     }
 
     it("event is sent that the circuit is tripped on the third failure") {
@@ -66,14 +69,14 @@ class AkkaCircuitBreakerTest extends FunSpec with ShouldMatchers {
     val states = new ListBuffer[CircuitStateChange]()
     val circuitBreaker = new AkkaCircuitBreaker(config).onCircuitStatusChange(states += _)
 
-    it("first slow response is propagated to the caller (but counts as a failure to the circuit") {
-      respondWith(circuitBreaker, 50) shouldEqual "yay"
+    it("first slow response times out to the caller (and counts as a failure to the circuit") {
+      Try(respondWith(circuitBreaker, 50)).throwable shouldEqual CircuitTimeout(name)
     }
-    it("second slow response is propagated to the caller (but counts as a failure to the circuit") {
-      respondWith(circuitBreaker, 50) shouldEqual "yay"
+    it("second slow response times out to the caller (and counts as a failure to the circuit") {
+      Try(respondWith(circuitBreaker, 50)).throwable shouldEqual CircuitTimeout(name)
     }
-    it("third slow response is propagated to the caller (but counts as a failure to the circuit") {
-      respondWith(circuitBreaker, 50) shouldEqual "yay"
+    it("third slow response times out to the caller (and counts as a failure to the circuit") {
+      Try(respondWith(circuitBreaker, 50)).throwable shouldEqual CircuitTimeout(name)
     }
     it("event is sent that the circuit is tripped on the third failure") {
       Thread.sleep(5)
@@ -84,31 +87,28 @@ class AkkaCircuitBreakerTest extends FunSpec with ShouldMatchers {
     it("circuit is now has tripped - service is unavailable") {
       Try(respondWith(circuitBreaker, 0)).throwable shouldEqual CircuitBroken(name, "Open")
     }
+
     it("the circuit is half opened after the timeout") {
       Thread.sleep(downTime.toMillis + 20)
       states.toList shouldEqual List(CircuitStateChange(name, CircuitStatus.HalfOpen))
       states.clear()
       respondWith(circuitBreaker, 0) shouldEqual "yay"
     }
+
     it("the circuit is closed") {
       states.toList shouldEqual List(CircuitStateChange(name, CircuitStatus.Closed))
     }
   }
 
   private def respondWith(circuitBreaker: CircuitBreaker, latency: Int): String = {
-    Await.result(circuitBreaker.withCircuit({
-      Thread.sleep(latency)
-      Future.value("yay")
-    }))
+    result(circuitBreaker.withCircuit(sleep(fromMilliseconds(latency))(new JavaTimer()).map(_ => "yay")))
   }
 
   describe("fail fast - unexpected errors") {
     val states = new ListBuffer[CircuitStateChange]()
     val circuitBreaker = new AkkaCircuitBreaker(config).onCircuitStatusChange(states += _)
-    val e = new scala.RuntimeException()
-
     it("Fail fast errors are converted into Circuit Down") {
-      Try(Await.result(circuitBreaker.withCircuit(throw new FailedFastException("")))).throwable shouldEqual CircuitBroken(name, "Down")
+      Try(result(circuitBreaker.withCircuit(throw new FailedFastException("")))).throwable shouldEqual CircuitBroken(name, "Down")
     }
   }
 }
