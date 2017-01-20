@@ -10,7 +10,7 @@ name := projectName
 
 description := "Http circuit-breaking for Finagle"
 
-scalaVersion := "2.12.0"
+scalaVersion := "2.11.8"
 
 crossScalaVersions := Seq("2.12.0", "2.11.8")
 
